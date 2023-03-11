@@ -4,7 +4,7 @@
 The `tsglasso` is a package that implements time series graphical lasso as described in Dallakyan et. al 2022 (https://www.sciencedirect.com/science/article/abs/pii/S0167947322001372)
 and Tugnait 2018 (https://ieeexplore.ieee.org/document/8645324).
 
-The main function is `tsglasso()`, which takes a data matrix returns the estimate of (inverse) spectral density matrix. We also provide a usage of `tsglasso()` in the context of estimating sparse VAR coefficient matrix using
+The main function is `tsglasso()`, which takes a data matrix as an input and returns the estimate of (inverse) spectral density matrix. We also provide a usage of `tsglasso()` in the context of estimating sparse VAR coefficient matrix using
 `msvar()` function.
 
 ## Installation

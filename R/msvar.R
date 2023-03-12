@@ -400,7 +400,6 @@ sparseVARTG   = function(dta, p, p.ub=NULL, d, sigPairs=NULL,
 
 
       if(p==0){
-            cat("p is zero")
             computeAsyVar = FALSE
             computeOneStepMSE = FALSE
             para.num.VAR  = 0

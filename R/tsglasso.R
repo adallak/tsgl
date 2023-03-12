@@ -252,7 +252,7 @@ comparetsg <- function (esttsg, truetsg)
                   if (iter_i != iter_j)
                   {
                         dmy_est = esttsg[iter_i,iter_j,]
-                        if (!is.na(dim(truetsg[3]))){
+                        if (!is.null(dim(truetsg[3]))){
                            dmy_true = truetsg[iter_i,iter_j,]
                            if(all(Mod(dmy_true) != 0))
                            {

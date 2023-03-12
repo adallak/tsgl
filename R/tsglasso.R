@@ -294,6 +294,41 @@ comparetsg <- function (esttsg, truetsg)
       c(tpr = tpr, fpr = fpr, tdr = tdr)
 }
 
+##############################################
+########## Get adjacency matrix #######
+#' This function gets adjacency matrix for `tsglasso`
+#' output
+#
+#' @param estmat            - three dimensional tensor
+#'
+#' @return
+#' *`adj` returns adjacency matrix
+#'
+#' @export
+adjacency_from_tsgl <- function(estmat){
+   p = dim(estmat)[2]
+   f = dim(estmat)[3]
+   if (is.null(f)){
+      stop("Input should be three dimensional")
+   }
+   #### Construct adjacency matrices
+   adj = matrix(0, p, p)
+   for (iter_i in 1:p)
+   {
+      for (iter_j in 1:p)
+      {
+         if (iter_i != iter_j)
+         {
+            dmy_est = estmat[iter_i,iter_j,]
+            if(all(Mod(dmy_est) != 0))
+            {
+               adj[iter_i, iter_j] = 1
+            }
+         }
+      }
+   }
+   return(adj)
+}
 
 selectlambda <- function(X,
                          lambdalist = NULL, nlam = 40, trim_min = 0.01,

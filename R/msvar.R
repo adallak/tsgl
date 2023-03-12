@@ -339,7 +339,6 @@ specComputeTG <- function(dta, spans = NULL,
       #    gmodel = ADMM_LASSO_TimeSeries(S= fxx, lambda=lambda, rho = rho, alpha = alpha, MAX_ITER = ADMM_ITER,
       #                         thr = thr)
       #### Modification here 11/19/2020
-      cat("pen method is ", pen.method)
       gmodel = tsglasso(dta = dta, lambda = lambda,
                                      rho = rho, alpha = alpha,
                                      MAX_ITER = ADMM_ITER, thresh = thresh,
@@ -1843,7 +1842,7 @@ gendiagAR <- function(K, p = 3, block = 5) {
 #' @return
 #' * returns K x K adjacency matrix
 #' @export
-getcoefadj <- function(A){
+getcoefadj <- function(A, diag = TRUE){
       K = dim(A)[1]
       msvarAadj = matrix(1, K, K)
       compAadj = abs(A)
@@ -1866,6 +1865,9 @@ getcoefadj <- function(A){
       }else{
             msvarAadj = abs(msvar_A)
             msvarAadj[msvarAadj > 0] = 1
+      }
+      if(isTRUE(diag)) {
+         msvarAadj = msvarAadj - diag(1, K,K)
       }
       return(msvarAadj)
 }

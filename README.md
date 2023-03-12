@@ -57,6 +57,6 @@ msVAR.result = msvar(dta = dta, p.seq = p.seq, lambda = 0.1,
                      rho.flex = TRUE, rho = 10) 
 msvar_A = msVAR.result$stage2$estA
 msvarAadj = getcoefadj(msvar_A)
-## Threshold the result
+## Print the result
 plot_mat(msvarAadj, main = "msVAR")
 ```

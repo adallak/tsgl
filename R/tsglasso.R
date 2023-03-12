@@ -243,7 +243,6 @@ comparetsg <- function (esttsg, truetsg)
 
       p = dim(esttsg)[2]
       f = dim(esttsg)[3]
-
       #### Construct adjacency matrices
       estAdj = trueAdj = matrix(0, p, p)
       for (iter_i in 1:p)
@@ -253,14 +252,16 @@ comparetsg <- function (esttsg, truetsg)
                   if (iter_i != iter_j)
                   {
                         dmy_est = esttsg[iter_i,iter_j,]
-                        dmy_true = truetsg[iter_i,iter_j,]
+                        if (truetsg[3] > 0){
+                           dmy_true = truetsg[iter_i,iter_j,]
+                           if(all(Mod(dmy_true) != 0))
+                           {
+                              trueAdj[iter_i, iter_j] = 1
+                           }
+                        }
                         if(all(Mod(dmy_est) != 0))
                         {
                               estAdj[iter_i, iter_j] = 1
-                        }
-                        if(all(Mod(dmy_true) != 0))
-                        {
-                              trueAdj[iter_i, iter_j] = 1
                         }
 
                   }

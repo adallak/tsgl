@@ -305,7 +305,7 @@ comparetsg <- function (esttsg, truetsg)
 #' *`adj` returns adjacency matrix
 #'
 #' @export
-adjacency_from_tsgl <- function(estmat){
+adjacency_from_tsgl <- function(estmat, diag= TRUE){
    p = dim(estmat)[2]
    f = dim(estmat)[3]
    if (is.null(f)){
@@ -326,6 +326,9 @@ adjacency_from_tsgl <- function(estmat){
             }
          }
       }
+   }
+   if (isFALSE(diag)){
+      adj = adj + diag(1, p,p)
    }
    return(adj)
 }
